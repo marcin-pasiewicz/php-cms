@@ -24,6 +24,12 @@
                         $post_date = $row["post_date"];
                         $post_image = $row["post_image"];
                         $post_content = substr($row["post_content"], 0, 300);
+                        $post_status = $row["post_status"];
+
+                        if( $post_status !== 'published') {
+                            echo "<h1 class='text-center'>NO POST SORRY</h1>";
+                        } else {
+
                         ?>
                         <!-- First Blog Post -->
                         <h2>
@@ -39,7 +45,7 @@
                         <p><?php echo $post_content?></p>
                         <a class="btn btn-primary" href="#">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
                         <hr>
-                    <?php } ?>
+                    <?php } } ?>
         </div>
 
         <!-- Blog Sidebar Widgets Column -->
