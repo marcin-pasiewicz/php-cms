@@ -3,10 +3,8 @@ ob_start();
 session_start();
 include "../includes/db.php";
 include "functions.php";
-if(isset($_SESSION['user_role'])) {
-    if($_SESSION['user_role'] == 'subscriber') {
+if(!isset($_SESSION['user_role'])) {
         header("Location: ../index.php");
-    }
 }
 ?>
 
