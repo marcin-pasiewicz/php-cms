@@ -17,7 +17,7 @@
 <!-- Login-->
 <div class="well">
     <h4>Login</h4>
-    <form action="/includes/login.php" method="post">
+    <form action="includes/login.php" method="post">
         <div class="input-group">
             <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
             <input type="text" name="user_name" placeholder="login" class="form-control">
