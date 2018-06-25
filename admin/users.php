@@ -25,7 +25,7 @@
                                 include "includes/add_user.php";
                                 break;
 
-                            case 'edit_edit':
+                            case 'edit_user':
                                 include 'includes/edit_user.php';
                                 break;
                             default:
