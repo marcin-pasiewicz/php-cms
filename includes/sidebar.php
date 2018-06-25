@@ -14,7 +14,23 @@
     </div>
     <!-- /.input-group -->
 </div>
-
+<!-- Login-->
+<div class="well">
+    <h4>Login</h4>
+    <form action="/includes/login.php" method="post">
+        <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+            <input type="text" name="user_name" placeholder="login" class="form-control">
+        </div>
+        <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+            <input type="password" name="user_password" placeholder="password" class="form-control">
+            <span class="input-group-btn">
+                <button class="btn btn-primary" name="login" type="submit">Login</button>
+            </span>
+        </div>
+    </form>
+</div>
 <!-- Blog Categories Well -->
 <div class="well">
     <?php
@@ -26,7 +42,7 @@
         <div class="col-lg-12">
             <ul class="list-unstyled">
                 <?php
-                while($row = mysqli_fetch_assoc($select_categories_sidebar)) {
+                while ($row = mysqli_fetch_assoc($select_categories_sidebar)) {
                     $cat_id = $row['cat_id'];
                     $cat_title = $row['cat_title'];
                     echo "<li><a href='category.php?category=$cat_id'>{$cat_title}</a></li>";
@@ -40,4 +56,4 @@
 </div>
 
 <!-- Side Widget Well -->
-<?php include "widget.php";?>
+<?php include "widget.php"; ?>
