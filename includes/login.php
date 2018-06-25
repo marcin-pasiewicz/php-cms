@@ -23,9 +23,7 @@ include "../admin/includes/functions.php";
         $db_user_role = $row['user_role'];
     }
 
-    if ($user_name !== $db_user_name && $password !== $db_user_lastname) {
-        header("Location: ../index.php");
-    } else if($user_name == $db_user_name && $password !== $db_user_lastname) {
+    if ($user_name === $db_user_name && $password === $db_user_lastname) {
         $_SESSION['username'] = $db_user_name;
         $_SESSION['firsname'] = $db_user_firstname;
         $_SESSION['lastname'] = $db_user_lastname;
