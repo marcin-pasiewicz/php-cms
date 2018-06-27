@@ -16,6 +16,7 @@ if(isset($_POST['create_user'])) {
 
 //    move_uploaded_file($user_image_temp, "../images/$user_image");
     confirmQuery($create_user_query);
+    echo "user created:  " . "<a href='users.php'>$user_name</a>";
 }
 ?>
 <form action="" method="post" enctype="multipart/form-data">
