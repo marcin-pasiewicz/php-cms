@@ -60,7 +60,7 @@
                 <a href="../admin/comments.php"><i class="fa fa-fw fa-file"></i>Comments</a>
             </li>
             <li>
-                <a href="index-rtl.html"><i class="fa fa-fw fa-dashboard"></i>Profile</a>
+                <a href="../admin/profile.php"><i class="fa fa-fw fa-dashboard"></i>Profile</a>
             </li>
         </ul>
     </div>
