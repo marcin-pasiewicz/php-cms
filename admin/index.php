@@ -28,8 +28,8 @@
                                     <div class="col-xs-9 text-right">
                                         <?php
                                             $query = "SELECT * FROM posts";
-                                            $select_all_users = mysqli_query($connection, $query);
-                                            $posts_count = mysqli_num_rows($select_all_users);
+                                            $select_all_posts = mysqli_query($connection, $query);
+                                            $posts_count = mysqli_num_rows($select_all_posts);
                                         ?>
                                         <div class='huge'><?php echo $posts_count?></div>
                                         <div>Posts</div>
@@ -55,8 +55,8 @@
                                     <div class="col-xs-9 text-right">
                                         <?php
                                         $query = "SELECT * FROM comments";
-                                        $select_all_users = mysqli_query($connection, $query);
-                                        $comments_count = mysqli_num_rows($select_all_users);
+                                        $select_all_comments = mysqli_query($connection, $query);
+                                        $comments_count = mysqli_num_rows($select_all_comments);
                                         ?>
                                         <div class='huge'><?php echo $comments_count?></div>
                                         <div>Comments</div>
@@ -129,6 +129,19 @@
                 </div>
                 <!-- /.row -->
                 <div class="row">
+                    <?php
+                     $query = "SELECT * FROM posts WHERE post_status = 'draft'";
+                     $select_all_draft_posts = mysqli_query($connection, $query);
+                     $draft_posts_count = mysqli_num_rows($select_all_draft_posts);
+
+                    $query = "SELECT * FROM comments WHERE comment_status = 'unapproved'";
+                    $select_unapproved_comments = mysqli_query($connection, $query);
+                    $unapproved_comments_count = mysqli_num_rows($select_unapproved_comments);
+
+                    $query = "SELECT * FROM users WHERE user_role = 'subscriber'";
+                    $select_subscriber_users = mysqli_query($connection, $query);
+                    $subscriber_users_count = mysqli_num_rows($select_subscriber_users);
+                    ?>
                     <script type="text/javascript">
                         google.charts.load('current', {'packages':['bar']});
                         google.charts.setOnLoadCallback(drawChart);
@@ -137,10 +150,10 @@
                             var data = google.visualization.arrayToDataTable([
                                 ['Date', 'Count'],
                                 <?php
-                                    $element_text = ['Active posts', 'Comments', 'Users', 'Categories'];
-                                    $element_count = [$posts_count, $comments_count, $users_count ,$categories_count];
+                                    $element_text = ['Active posts', 'Draft posts', 'Comments', 'Pending comments', 'Users', 'subscribers', 'Categories'];
+                                    $element_count = [$posts_count, $draft_posts_count, $comments_count, $unapproved_comments_count, $users_count, $subscriber_users_count, $categories_count];
 
-                                    for($i =0; $i < 4; $i++) {
+                                    for($i =0; $i < 7; $i++) {
                                         echo "['{$element_text[$i]}'" . "," . "{$element_count[$i]}],";
                                     }
                                 ?>
