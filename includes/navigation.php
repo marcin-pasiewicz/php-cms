@@ -21,7 +21,15 @@
                         echo "<li><a href='#'>{$cat_title}</a></li>";
                     }
                 ?>
-                <li><a href="admin/">Admin</a>/li>
+                <li><a href="admin/">Admin</a></li>
+                <?php
+                if(isset($_SESSION['user_role'])) {
+                        if(isset($_GET['post_id'])) {
+                           $get_post_id = $_GET['post_id'];
+                           echo "<li><a href='admin/posts.php?source=edit_post&post_id={$get_post_id}'>Edit post</a></li>";
+                    }
+                }
+                ?>
             </ul>
         </div>
         <!-- /.navbar-collapse -->
