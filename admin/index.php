@@ -130,9 +130,13 @@
                 <!-- /.row -->
                 <div class="row">
                     <?php
-                     $query = "SELECT * FROM posts WHERE post_status = 'draft'";
-                     $select_all_draft_posts = mysqli_query($connection, $query);
-                     $draft_posts_count = mysqli_num_rows($select_all_draft_posts);
+                    $query = "SELECT * FROM posts WHERE post_status = 'published'";
+                    $select_all_published_posts = mysqli_query($connection, $query);
+                    $published_posts_count = mysqli_num_rows($select_all_published_posts);
+
+                    $query = "SELECT * FROM posts WHERE post_status = 'draft'";
+                    $select_all_draft_posts = mysqli_query($connection, $query);
+                    $draft_posts_count = mysqli_num_rows($select_all_draft_posts);
 
                     $query = "SELECT * FROM comments WHERE comment_status = 'unapproved'";
                     $select_unapproved_comments = mysqli_query($connection, $query);
@@ -150,10 +154,10 @@
                             var data = google.visualization.arrayToDataTable([
                                 ['Date', 'Count'],
                                 <?php
-                                    $element_text = ['Active posts', 'Draft posts', 'Comments', 'Pending comments', 'Users', 'subscribers', 'Categories'];
-                                    $element_count = [$posts_count, $draft_posts_count, $comments_count, $unapproved_comments_count, $users_count, $subscriber_users_count, $categories_count];
+                                    $element_text = ['Active posts', 'Published posts', 'Draft posts', 'Comments', 'Pending comments', 'Users', 'subscribers', 'Categories'];
+                                    $element_count = [$posts_count, $published_posts_count, $draft_posts_count, $comments_count, $unapproved_comments_count, $users_count, $subscriber_users_count, $categories_count];
 
-                                    for($i =0; $i < 7; $i++) {
+                                    for($i =0; $i < 8; $i++) {
                                         echo "['{$element_text[$i]}'" . "," . "{$element_count[$i]}],";
                                     }
                                 ?>
