@@ -38,6 +38,5 @@ if(!isset($_SESSION['user_role'])) {
     <![endif]-->
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="./js/plugins/tinymce/js/tinymce/tinymce.min.js"></script>
-    <script src="./js/scripts.js"></script>
 </head>
 <body>
