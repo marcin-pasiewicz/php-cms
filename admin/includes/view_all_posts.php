@@ -85,10 +85,10 @@
         echo "<td><img src='../images/{$post_image}' width='100px''/></td>";
         echo "<td>{$post_tags}</td>";
         echo "<td>{$post_comment_count}</td>";
-        echo "<td>{$post_date}</td>";
+        echo "<td>{$post_date }</td>";
         echo "<td><a href='../post.php?post_id={$post_id}'>View post</a></td>";
         echo "<td><a href='posts.php?source=edit_post&post_id={$post_id}'>Edit</a></td>";
-        echo "<td><a href='posts.php?delete={$post_id}'>Delete</a></td>";
+        echo "<td><a onClick=\" javascript: confirm('Are you sure you want to delete?')\" href='posts.php?delete={$post_id}'>Delete</a></td>";
         echo "</tr>";
     }
     if(isset($_GET['delete'])) {

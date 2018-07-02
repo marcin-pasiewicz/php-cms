@@ -34,10 +34,16 @@ if(isset($_POST['update_user'])) {
 //        }
 //
 //    }
+    $query = "SELECT rand_salt FROM users";
+    $select_rand_salt_query = mysqli_query($connection, $query);
+    confirmQuery($select_rand_salt_query);
+    $row = mysqli_fetch_assoc($select_rand_salt_query);
+    $salt = $row['rand_salt'];
+    $hashed_password = crypt($user_password, $salt);
 
     $query = "UPDATE users SET ";
     $query .= "user_name = '{$user_name}', ";
-    $query .= "user_password = '{$user_password}', ";
+    $query .= "user_password = '{$hashed_password}', ";
     $query .= "user_firstname = '{$user_firstname}', ";
     $query .= "user_lastname = '{$user_lastname}', ";
     $query .= "user_email = '{$user_email}', ";
@@ -72,7 +78,7 @@ if(isset($_POST['update_user'])) {
         <div class="form-group">
             <label for="user_title">User Role</label>
             <select class="form-control" name="user_role">
-                <option value="subscriber"><?php echo $user_role ?></option>
+                <option value="<?php echo $user_role ?>"><?php echo $user_role ?></option>
                 <?php
                 if($user_role == 'admin') {
                     echo "<option value='subscriber'>subscriber</option>";

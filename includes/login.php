@@ -22,6 +22,7 @@ include "../admin/includes/functions.php";
         $db_user_lastname = $row['user_lastname'];
         $db_user_role = $row['user_role'];
     }
+    $password = crypt($password, $db_user_password);
 
     if ($user_name === $db_user_name && $password === $db_user_password) {
         $_SESSION['username'] = $db_user_name;
